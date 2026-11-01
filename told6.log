@@ -1,0 +1,176 @@
+nohup: ignoring input
+/home/user/wolf/train400_v2.py:41: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(CKPT, map_location="cpu")
+params 401.8M  从 step 30999 接着跑  数据 all2.bin
+训练 51.2 亿 token，验证 0.26 亿
+30999 loss 2.8357 4.1s
+31099 loss 2.8896 83.2s
+31199 loss 2.8740 162.6s
+31299 loss 2.8346 241.9s
+31399 loss 2.8538 320.6s
+31499 loss 2.8389 398.5s
+saved @ 31499
+31599 loss 2.8532 485.4s
+31699 loss 2.8584 561.7s
+31799 loss 2.8018 637.8s
+31899 loss 2.8150 713.5s
+31999 loss 2.9369 788.9s
+saved @ 31999
+VAL 31999 2.8211
+32099 loss 2.8257 878.5s
+32199 loss 2.8899 953.3s
+32299 loss 2.9167 1028.1s
+32399 loss 2.7872 1102.8s
+32499 loss 2.8661 1177.4s
+saved @ 32499
+32599 loss 2.9210 1261.6s
+32699 loss 2.8299 1336.3s
+32799 loss 2.7411 1411.1s
+32899 loss 2.7800 1485.8s
+32999 loss 2.9217 1560.4s
+saved @ 32999
+VAL 32999 2.8523
+33099 loss 2.7383 1649.4s
+33199 loss 2.8279 1724.1s
+33299 loss 2.9032 1798.7s
+33399 loss 2.9316 1873.3s
+33499 loss 2.7925 1948.0s
+saved @ 33499
+33599 loss 2.8217 2032.1s
+33699 loss 2.7952 2106.8s
+33799 loss 2.8253 2181.6s
+33899 loss 2.8837 2256.4s
+33999 loss 2.7584 2331.1s
+saved @ 33999
+VAL 33999 2.8430
+34099 loss 2.7449 2419.7s
+34199 loss 2.8404 2494.5s
+34299 loss 2.7667 2569.2s
+34399 loss 2.8507 2644.0s
+34499 loss 2.7868 2718.7s
+saved @ 34499
+34599 loss 2.8675 2803.1s
+34699 loss 2.8032 2877.9s
+34799 loss 2.7218 2952.6s
+34899 loss 2.7942 3027.4s
+34999 loss 2.6375 3102.1s
+saved @ 34999
+VAL 34999 2.8125
+35099 loss 2.7827 3190.9s
+35199 loss 2.7896 3265.6s
+35299 loss 2.7949 3340.4s
+35399 loss 2.8763 3415.2s
+35499 loss 2.8434 3489.9s
+saved @ 35499
+35599 loss 2.8302 3574.2s
+35699 loss 2.8659 3648.9s
+35799 loss 2.9106 3723.7s
+35899 loss 2.7616 3798.4s
+35999 loss 2.8101 3873.2s
+saved @ 35999
+VAL 35999 2.8031
+36099 loss 2.8354 3961.8s
+36199 loss 2.8202 4036.5s
+36299 loss 2.7682 4111.3s
+36399 loss 2.9381 4186.0s
+36499 loss 2.8011 4260.8s
+saved @ 36499
+36599 loss 2.7995 4344.8s
+36699 loss 2.7811 4419.5s
+36799 loss 2.8204 4494.3s
+36899 loss 2.7336 4569.0s
+36999 loss 2.6641 4643.7s
+saved @ 36999
+VAL 36999 2.7945
+37099 loss 2.7891 4732.5s
+37199 loss 2.8755 4807.3s
+37299 loss 2.8328 4882.0s
+37399 loss 2.7367 4956.7s
+37499 loss 2.8507 5031.4s
+saved @ 37499
+37599 loss 2.7850 5115.7s
+37699 loss 2.7741 5190.4s
+37799 loss 2.7405 5265.1s
+37899 loss 2.7022 5339.9s
+37999 loss 2.8316 5414.6s
+saved @ 37999
+VAL 37999 2.7938
+38099 loss 2.8097 5503.2s
+38199 loss 2.6890 5577.9s
+38299 loss 2.9155 5652.6s
+38399 loss 2.7629 5727.4s
+38499 loss 2.7328 5802.1s
+saved @ 38499
+38599 loss 2.6842 5886.1s
+38699 loss 2.7494 5960.8s
+38799 loss 2.8026 6035.5s
+38899 loss 2.7347 6110.3s
+38999 loss 2.6874 6185.0s
+saved @ 38999
+VAL 38999 2.7672
+39099 loss 2.6903 6273.8s
+39199 loss 2.7685 6348.5s
+39299 loss 2.7680 6423.2s
+39399 loss 2.7116 6498.0s
+39499 loss 2.7556 6572.7s
+saved @ 39499
+39599 loss 2.7453 6656.8s
+39699 loss 2.7705 6731.5s
+39799 loss 2.6908 6806.3s
+39899 loss 2.7672 6881.0s
+39999 loss 2.7160 6955.7s
+saved @ 39999
+VAL 39999 2.7430
+40099 loss 2.7448 7044.3s
+40199 loss 2.6601 7119.1s
+40299 loss 2.7163 7193.8s
+40399 loss 2.8192 7268.5s
+40499 loss 2.7325 7343.3s
+saved @ 40499
+40599 loss 2.7323 7427.2s
+40699 loss 2.7328 7502.0s
+40799 loss 2.8733 7576.7s
+40899 loss 2.9667 7651.5s
+40999 loss 2.8149 7726.2s
+saved @ 40999
+VAL 40999 2.7484
+41099 loss 2.7383 7815.0s
+41199 loss 2.8077 7889.7s
+41299 loss 2.6943 7964.4s
+41399 loss 2.7272 8039.2s
+41499 loss 2.7746 8113.9s
+saved @ 41499
+41599 loss 2.6854 8198.1s
+41699 loss 2.7012 8272.8s
+41799 loss 2.7735 8347.5s
+41899 loss 2.7305 8422.2s
+41999 loss 2.7495 8497.0s
+saved @ 41999
+VAL 41999 2.7586
+42099 loss 2.8068 8585.6s
+42199 loss 2.7005 8660.3s
+42299 loss 2.8348 8735.1s
+42399 loss 2.7515 8809.8s
+42499 loss 2.7662 8884.6s
+saved @ 42499
+42599 loss 2.6870 8968.6s
+42699 loss 2.8218 9043.3s
+42799 loss 2.8231 9118.0s
+42899 loss 2.7963 9192.7s
+42999 loss 2.6143 9267.4s
+saved @ 42999
+VAL 42999 2.7219
+43099 loss 2.6379 9356.2s
+43199 loss 2.7762 9430.9s
+43299 loss 2.7338 9505.6s
+43399 loss 2.7880 9580.3s
+43499 loss 2.7332 9655.1s
+saved @ 43499
+43599 loss 2.7083 9739.3s
+43699 loss 2.6712 9814.0s
+43799 loss 2.7322 9888.8s
+43899 loss 2.6644 9963.5s
+43999 loss 2.6756 10038.2s
+saved @ 43999
+VAL 43999 2.7094
+44099 loss 2.6994 10126.8s

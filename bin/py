@@ -1,0 +1,4 @@
+#!/bin/sh
+# 统一入口：加载封存密钥后再执行
+[ -f "$HOME/.wolf_key" ] && . "$HOME/.wolf_key"
+exec python3 "$@"

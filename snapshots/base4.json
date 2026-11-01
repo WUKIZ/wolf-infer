@@ -1,0 +1,22 @@
+{
+ "tag": "base4",
+ "torch": "2.4.1",
+ "case_pass": {
+  "c00": true,
+  "c01": false,
+  "c02": false,
+  "c03": false,
+  "c04": false,
+  "c05": true,
+  "c06": false,
+  "c07": false,
+  "c08": true,
+  "c09": false,
+  "c10": false,
+  "c11": true
+ },
+ "tok_s_single": 2.139,
+ "tok_s_div32": 13.467,
+ "prefill_s_item": 0.0776,
+ "pass_rate": "4/12"
+}

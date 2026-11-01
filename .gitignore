@@ -1,0 +1,17 @@
+.tmp/
+__pycache__/
+*.pyc
+models/
+home/state/
+home/corpus.txt
+*.safetensors
+*.gguf
+.env
+*.key
+manifest.json
+logs/guard.log
+snapshots/*.log
+home/
+logs/
+logs/
+.privacy-deny

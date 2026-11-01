@@ -1,0 +1,172 @@
+{
+  "name": "lone_wolf",
+  "version": "0.1.0",
+  "paths": {
+    "home": "home",
+    "state": "home/state",
+    "memory": "home/memory",
+    "seed": "home/seed",
+    "threshold": "threshold",
+    "excursion": "excursion",
+    "shared": "shared",
+    "logs": "logs"
+  },
+  "boot": {
+    "home_power_only": true,
+    "max_boot_seconds": 5,
+    "external_compute_lease": {
+      "enabled": true,
+      "max_lease_hours": 3,
+      "fallback_local": true
+    }
+  },
+  "observer": {
+    "probe_interval_s": 30,
+    "conceal_lead_time_s": 1.5,
+    "min_dwell_s": 3.0,
+    "max_excursion_s": 900,
+    "quiet_s": 300,
+    "trip_on": [
+      "port_scan",
+      "signature_match",
+      "fingerprint_query",
+      "unexpected_ingress"
+    ]
+  },
+  "guard": {
+    "integrity_check_interval_s": 10,
+    "on_tamper": "halt_and_restore",
+    "manifest": "home/state/manifest.sha256"
+  },
+  "model": {
+    "backend": "local_numpy",
+    "n_layers": 4,
+    "hidden": 128,
+    "context": 64,
+    "tokenizer": "bpe",
+    "vocab": 2048,
+    "sampling": {
+      "temperature": 0.8,
+      "top_k": 40,
+      "repetition_penalty": 1.15,
+      "no_repeat_ngram": 3
+    }
+  },
+  "learn": {
+    "timeout_s": 8.0,
+    "max_corpus_bytes": 1000000
+  },
+  "compute": {
+    "max_lease_hours_per_day": 3,
+    "budget_s": 180,
+    "fallback_local": true
+  },
+  "daemon": {
+    "interval_s": 60,
+    "train_every_bytes": 1000000000,
+    "train_steps": 0,
+    "train_lr": 0.0003,
+    "train_min_interval_s": 1800,
+    "crawl_pages": 1,
+    "crawl_depth": 1,
+    "crawl_delay_s": 0.3,
+    "via_browser": false,
+    "max_runtime_s": 0,
+    "max_steps": 0
+  },
+  "permissions": {
+    "enabled": true,
+    "net": {
+      "allow_hosts": [],
+      "max_requests_per_hour": 60,
+      "max_bytes_per_day": 20000000
+    },
+    "train": {
+      "max_steps_per_hour": 200,
+      "max_steps_per_day": 2000
+    }
+  },
+  "crawl": {
+    "max_pages": 3,
+    "max_depth": 1,
+    "delay_s": 0.3
+  },
+  "limits": {
+    "rss_mb": 700,
+    "env_mb": 6144
+  },
+  "brain": {
+    "mode": "auto",
+    "secrets_paths": [
+      "../wolf-config/secrets.json",
+      "~/.config/wolf/secrets.json"
+    ],
+    "providers": [
+      {
+        "name": "deepseek",
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-chat",
+        "key": "deepseek",
+        "daily_tokens": 500000,
+        "per_min_tokens": 20000
+      },
+      {
+        "name": "groq",
+        "base_url": "https://api.groq.com/openai/v1",
+        "model": "llama-3.3-70b-versatile",
+        "key": "groq",
+        "daily_tokens": 100000,
+        "per_min_tokens": 10000
+      },
+      {
+        "name": "google",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "model": "gemini-2.0-flash",
+        "key": "google",
+        "daily_tokens": 100000,
+        "per_min_tokens": 10000
+      },
+      {
+        "name": "openrouter",
+        "base_url": "https://openrouter.ai/api/v1",
+        "model": "deepseek/deepseek-chat:free",
+        "key": "openrouter",
+        "daily_tokens": 50000,
+        "per_min_tokens": 5000
+      },
+      {
+        "name": "mistral",
+        "base_url": "https://api.mistral.ai/v1",
+        "model": "mistral-small-latest",
+        "key": "mistral",
+        "daily_tokens": 50000,
+        "per_min_tokens": 5000
+      },
+      {
+        "name": "cerebras",
+        "base_url": "https://api.cerebras.ai/v1",
+        "model": "llama3.1-8b",
+        "key": "cerebras",
+        "daily_tokens": 100000,
+        "per_min_tokens": 10000
+      }
+    ],
+    "remote": {
+      "base_url": "https://api.deepseek.com",
+      "model": "deepseek-chat",
+      "timeout_s": 30,
+      "max_tokens": 220,
+      "temperature": 0.7,
+      "send_context": false
+    }
+  },
+  "web": {
+    "host": "127.0.0.1",
+    "port": 8088
+  },
+  "curriculum": [
+    "https://example.com",
+    "https://arxiv.org/list/cs.LG/recent",
+    "https://www.gutenberg.org/cache/epub/23950/pg23950.txt"
+  ]
+}

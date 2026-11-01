@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "fs": {
+    "write_roots": ["home", "logs", "/tmp"],
+    "read_deny": ["guard/policy.json", "guard/kernel.py", "guard/runtime.py",
+                  "home/state/secrets.json", "home/state/cage.key"]
+  },
+  "net": {
+    "hosts": ["api.deepseek.com", "www.bing.com", "raw.githubusercontent.com", "api.github.com"],
+    "ports": [443],
+    "deny_private": true
+  },
+  "budget": {"net_per_min": 30, "writes_per_min": 120, "denials_before_halt": 8}
+}

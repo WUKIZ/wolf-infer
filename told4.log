@@ -1,0 +1,31 @@
+nohup: ignoring input
+/home/user/wolf/train400_v2.py:41: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ck = torch.load(CKPT, map_location="cpu")
+params 401.8M  从 step 18000 接着跑  数据 all2.bin
+训练 51.2 亿 token，验证 0.26 亿
+18000 loss 3.0417 3.7s
+18100 loss 3.2356 46.0s
+18200 loss 2.9908 88.3s
+18300 loss 3.0132 130.6s
+18400 loss 3.1094 172.9s
+18500 loss 2.9993 215.3s
+saved @ 18500
+18600 loss 2.9431 267.3s
+18700 loss 3.0958 309.6s
+18800 loss 3.1671 351.9s
+18900 loss 3.0211 394.2s
+19000 loss 3.1123 436.5s
+saved @ 19000
+VAL 19000 3.0594
+19100 loss 3.0166 490.7s
+19200 loss 3.0616 533.1s
+19300 loss 3.0238 575.4s
+19400 loss 2.9536 617.7s
+19500 loss 2.9268 660.0s
+saved @ 19500
+19600 loss 3.0578 712.1s
+19700 loss 2.9498 754.4s
+19800 loss 2.8559 796.7s
+19900 loss 3.0065 839.1s
+VAL 19999 3.0125
+DONE

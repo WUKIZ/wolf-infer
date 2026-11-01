@@ -1,0 +1,18 @@
+[Unit]
+Description=Lone Wolf — 自主出门/学习/回家
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__ROOT__
+ExecStart=__ROOT__/bin/py __ROOT__/main.py --service
+Restart=always
+RestartSec=5
+# 只允许人手动 refreeze：守护进程里没有这个变量
+Environment=WOLF_ALLOW_REFREEZE=0
+# 权限账本写在家目录里，需要可写
+ReadWritePaths=__ROOT__
+
+[Install]
+WantedBy=default.target

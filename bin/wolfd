@@ -1,0 +1,76 @@
+#!/bin/sh
+# 孤狼常驻守护：start | stop | status | logs
+# 它只是把 main.py --service 挂到后台，不做别的 —— 没有 systemd 也能跑。
+set -eu
+cd "$(dirname "$0")/.."
+
+PID=home/state/wolfd.pid
+
+alive() {
+    [ -f "$PID" ] && kill -0 "$(cat "$PID")" 2>/dev/null
+}
+
+case "${1:-status}" in
+    start)
+        if alive; then
+            echo "already running pid=$(cat "$PID")"
+            exit 0
+        fi
+        mkdir -p logs
+        nohup ./bin/py main.py --service >> logs/service.log 2>&1 &
+        echo $! > "$PID"
+        echo "started pid=$(cat "$PID")  log=logs/service.log"
+        ;;
+    stop)
+        if alive; then
+            kill -TERM "$(cat "$PID")" 2>/dev/null || true
+            i=0
+            while [ $i -lt 30 ] && alive; do sleep 0.1; i=$((i+1)); done
+            if alive; then kill -KILL "$(cat "$PID")" 2>/dev/null || true; fi
+            rm -f "$PID"
+            echo "stopped"
+        else
+            rm -f "$PID"
+            echo "not running"
+        fi
+        ;;
+    status)
+        if alive; then echo "running pid=$(cat "$PID")"; else echo "not running"; fi
+        ;;
+    logs)
+        tail -n "${2:-20}" logs/service.log 2>/dev/null || echo "no log yet"
+        ;;
+    check)
+        echo "root: $(pwd)"
+        for c in systemctl crontab setsid nohup; do
+            printf "%-10s %s\n" "$c" "$(command -v $c || echo '-')"
+        done
+        ;;
+    autostart)
+        ROOT=$(pwd)
+        if command -v systemctl >/dev/null 2>&1; then
+            DIR="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user"
+            mkdir -p "$DIR"
+            sed "s#__ROOT__#$ROOT#g" deploy/wolf.service.tmpl > "$DIR/wolf.service"
+            systemctl --user daemon-reload 2>/dev/null || true
+            systemctl --user enable --now wolf.service 2>/dev/null || true
+            echo "installed: $DIR/wolf.service"
+            echo "check: systemctl --user status wolf.service"
+        elif command -v crontab >/dev/null 2>&1; then
+            ( crontab -l 2>/dev/null | grep -v 'wolfd start' || true
+              echo "@reboot cd $ROOT && ./bin/wolfd start" ) | crontab -
+            echo "installed: @reboot crontab"
+        else
+            echo "这个环境没有 systemd，也没有 cron —— 无法真正自启动。"
+            echo "模板已备好：deploy/wolf.service.tmpl（把 __ROOT__ 换成 $ROOT）"
+            echo "在有 systemd 的机器上："
+            echo "  sed \"s#__ROOT__#$ROOT#g\" deploy/wolf.service.tmpl > ~/.config/systemd/user/wolf.service"
+            echo "  systemctl --user enable --now wolf.service"
+            exit 3
+        fi
+        ;;
+    *)
+        echo "usage: wolfd start|stop|status|logs|check|autostart"
+        exit 2
+        ;;
+esac
